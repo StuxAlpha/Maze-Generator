@@ -4,11 +4,16 @@ using System.Text;
 
 namespace Maze_Generator
 {
+    //Represents a line (coloumn or row) of the maze.
     class Line
     {
+        //How many spaces along from top/left the line is in the maze
         public int Position
         { get; }
 
+        //Each element represents a possible path intersecting the line.
+        //True = wall
+        //False = open
         private bool[] paths;
         public bool[] Paths
         {
@@ -16,6 +21,7 @@ namespace Maze_Generator
             private set { paths = value; }
         }
 
+        //Whether the path states for this line have been locked, using the LineLocked() method.
         private bool locked;
         public bool Locked
         {
@@ -30,57 +36,31 @@ namespace Maze_Generator
             for (int i = 0; i < Paths.Length; i++){ Paths[i] = true; }
             locked = false;
         }
-        public void lockLine(Line[] intersectingLines)
+
+        //Used to set the path states for the intersecting paths of this line.
+        //This is determined by checking which intersecting lines have already been locked,
+        //and ensuring there is exactly one open path in each partition between each locked intersecting line.
+        public void LockLine(Line[] intersectingLines)
         {
             if (locked == false)
             {
                 Random rng = new Random();
-                
-                int[] dividingLines = new int[intersectingLines.Length];
-                for (int i = 0; i < dividingLines.Length; i++)
-                {
-                    if (intersectingLines[i].Locked == true)
-                    {
-                        dividingLines[i] = 1;
-                    }
-                    else
-                    {
-                        dividingLines[i] = 0;
-                    }
-                }
-                //used to store the sizes of the consecutive spaces between dividing lines
-                List<int> partitionSizes = new List<int>();
-                //used to store the starting point of the respective partitions stored in the above
-                List<int> partitionLocations = new List<int>();
+                List<int> partitionSizes = new List<int>() { 1 };
+                List<int> partitionLocations = new List<int>() { 0 };
 
-                partitionLocations.Add(0);
-                partitionSizes.Add(1);
-
-                for (int i = 0; i < dividingLines.Length; i++)
+                for (int i = 0; i < intersectingLines.Length; i++)
                 {
-                    if(dividingLines[i] == 0)
+                    if(intersectingLines[i].Locked == false)
                     
                         
                         {
                             partitionSizes[partitionSizes.Count - 1]++;
                         }
                         else
-                        {
-                            
+                        {  
                             partitionLocations.Add(i+1);
                             partitionSizes.Add(1);
                         }
-                }
-
-                string reportPartitionLocations = "Partition Locations: ";
-                string reportPartitionSizes = "Partition Sizes: ";
-                for (int i = 0; i < partitionSizes.Count; i++)
-                {
-                    reportPartitionSizes = reportPartitionSizes + partitionSizes[i] + " ";
-                }
-                for (int i = 0; i < partitionLocations.Count; i++)
-                {
-                    reportPartitionLocations = reportPartitionLocations + partitionLocations[i] + " ";
                 }
 
                 for (int i = 0; i < partitionSizes.Count; i++)

@@ -32,10 +32,12 @@ The mazes generated have low depth but hight breadth - that is to say that the t
 
             //For this reason, when the user specificies the size of the maze instead of setting the absolute width and height they will set the number of paths.
             //In the example above, this is represented by w1 to w5 and h1 to h5, making it a maze of width 5 and height 5.
+            //r1... represents the 'rows' of the maze.
+            //c1... represents the 'columns' of the maze.
 
             //In this program:
-            //- We will refer to the number of paths wide or high as width or height of the maze.
-            //- We will refer to the number of lines of pillars as the number of columns or rows of the maze.
+            //- We will refer to the number of paths wide or high as the width or height of the maze. (5 and 5 in the example)
+            //- We will refer to the number of lines of pillars as the number of columns or rows of the maze. (4 and 4 in the example)
             //- We will refer to the total number of cells the final maze will be high or wide as the absolute height or absolute width.
 
             //SUMMARY OF THE ALGORITHM:

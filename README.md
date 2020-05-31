@@ -1,13 +1,14 @@
 # Maze-Generator
 
-//This program will generate a sqaure grid maze of a size specified by the user.
-            //The maze will take the form of a two dimensional array of type bool, with false representing a path and false representing a wall.
-            //The program also prints a visual representation to the console.
-            //The maze will be enclosed by walls.
-            //The maze will have an entrance and exit in the outer walls, on randomly chosen different edges.
-            //The maze will always be solvable - every path location will be contiguous with all other path locations.
-            //The algorithm will never generate loops in the maze.
-            //The mazes generated have low depth but hight breadth - that is to say that the total distance to the exit will be relatively short, but that there are many branching paths.
+This program will generate a sqaure grid maze of a size specified by the user.
+The maze will take the form of a two dimensional array of type bool, with false representing a path and false representing a wall.
+The program also prints a visual representation to the console, with an option to save as a JPG.
+
+The maze will be enclosed by walls.
+The maze will have an entrance and exit in the outer walls, on randomly chosen different edges.
+The maze will always be solvable - every path location will be contiguous with all other path locations.
+The algorithm will never generate loops in the maze - no path will lead back to itself.
+The mazes generated have low depth but hight breadth - that is to say that the total distance to the exit will be relatively short, but that there are many branching paths.
 
             //Below is an empty maze, before the algorithm adds additional walls and creates the entrance and exit:
 

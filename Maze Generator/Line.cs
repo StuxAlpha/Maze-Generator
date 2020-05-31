@@ -39,7 +39,7 @@ namespace Maze_Generator
 
         //Used to set the path states for the intersecting paths of this line.
         //This is determined by checking which intersecting lines have already been locked,
-        //and ensuring there is exactly one open path in each partition between each locked intersecting line.
+        //Then ensuring there is exactly one open path in each partition between each locked intersecting line.
         public void LockLine(Line[] intersectingLines)
         {
             if (locked == false)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Maze_Generator
@@ -34,7 +35,28 @@ namespace Maze_Generator
 
             bool[,] maze = MazeGeneratorController.GenerateMaze(width, height);
 
-            MazeGeneratorController.PrintMaze(maze);
+            MazeGeneratorController.PrintMazeToConsole(maze);
+
+            string input = "";
+
+            while (input != "y" && input != "n")
+            {
+                
+                Console.WriteLine("Would you like to save this maze as an image? y or n.");
+                input = Console.ReadLine();
+                if (input == "Y" || input == "y")
+                {
+                    MazeGeneratorController.SaveMazeAsJPG(maze);
+                }
+                else
+                {
+                    if (input != "N" && input != "n")
+                    {
+                        Console.WriteLine("Please type y or n");
+                    }
+                }
+                input.ToLower();
+            }
 
         }
     }

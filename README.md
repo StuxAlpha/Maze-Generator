@@ -39,11 +39,11 @@ The mazes generated have low depth but hight breadth - that is to say that the t
             //- We will refer to the total number of cells the final maze will be high or wide as the absolute height or absolute width.
 
             //SUMMARY OF THE ALGORITHM:
-            //Using the above as a starting point, the algorith first chooses a column or row. It fills this line with walls across the whole maze, leaving a single gap on a path.
-            //This means that either side of this line is connected, and so the maze paths are contiguous.
-            //Next a perpendicular line (if the first was a column, the second will be a row) is randomly selected, and again the line is filled in as walls,
+            //Using the above as a starting point, the algorithm first chooses a column or row. It fills this line with walls across the whole maze, leaving a single gap on a path.
+            //This means that the area either side of this line is connected (through that single gap), and so the maze paths are contiguous.
+            //Next a perpendicular line (if the first was a column, the second will be a row and vice versa) is randomly selected, and again the line is filled in as walls,
             //But this time a gap is left both before and after the previous line.
-            //In this way we now have 4 segments, all of which are guaranteed to be connected.
+            //In this way we now have 4 segments, all of which are guaranteed to be contiguous.
             //This continues, alternating between rows and columns, with a gap always left between any two bisecting lines each time a line is filled in.
             //If there are more columns than rows or vice versa, the remaining ones are filled without alternating orientation.
             //Because at every stage it is a logical necessity that all spaces remain connected, this must also be true of the final maze.
